@@ -11,13 +11,13 @@ const Banner = () => {
         <div style={{}}>
             <Grid container spacing={2} sx={{ my: 2 }}>
                 <Grid item xs={12} md={6}>
-                    <SharedCarousel></SharedCarousel>
-                    {/* <img style={{ width: '80%' }} src={banner} alt="" /> */}
+                    {/* <SharedCarousel></SharedCarousel> */}
+                    <img style={{ width: '80%' }} src={banner} alt="" />
                 </Grid>
                 <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "center" }}>
                     <Box>
                         <Typography variant="h3" sx={{ fontWeight: 500, color: 'primary.main' }}>
-                            World Top Watch Brand
+                            Now Your Time to Watch Time with
                         </Typography>
                         <Typography variant="h1" sx={{ fontWeight: 900, color: 'primary.main' }}>
                             Dazzle Watch

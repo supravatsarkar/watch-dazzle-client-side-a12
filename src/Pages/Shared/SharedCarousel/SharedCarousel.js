@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
-import banner1 from '../../../images/banner/banner.png'
-import banner2 from '../../../images/banner/banner-2.png'
+// import banner1 from 'https://i.ibb.co/94qHtSF/banner.png'
+// import banner2 from '../../../images/banner/banner-2.png'
+
+const items = [
+    {
+        name: 'supravat1',
+        description: 'xxxxx',
+        img: 'https://i.ibb.co/94qHtSF/banner.png'
+    },
+    {
+        name: 'supravat2',
+        description: 'xxxxx',
+        img: 'https://i.ibb.co/b1DjFxZ/banner-2.png'
+    },
+]
 
 const SharedCarousel = () => {
-    var items = [
-        {
-            img: banner1
-        },
-        {
-            img: banner2
-        },
-    ]
-
     return (
         <Carousel
             stopAutoPlayOnHover={false}
@@ -31,13 +35,10 @@ const SharedCarousel = () => {
 }
 
 function Item(props) {
-    const backGroundStyle = {
-        margin: '0',
-        marginTop: '-20%'
-
-    }
     return (
         <div style={{ zIndex: '-1' }}>
+            <h2>{props.item.name}</h2>
+            <p>{props.item.description}</p>
             <img style={{ width: "80%" }} src={props.item.img} alt="..." />
         </div>
     )
