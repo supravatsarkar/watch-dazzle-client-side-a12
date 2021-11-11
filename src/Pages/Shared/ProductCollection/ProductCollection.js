@@ -4,6 +4,7 @@ import Product from '../Product/Product';
 
 const ProductCollection = ({ productSize }) => {
     const [products, setProducts] = useState([]);
+    console.log('productSize', productSize);
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())

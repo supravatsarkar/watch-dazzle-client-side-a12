@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -24,6 +25,14 @@ const Navbar = () => {
                     <Typography variant="h4" component="h1" sx={{ flexGrow: 1, fontWeight: 500 }}>
                         Dazzle Watch
                     </Typography>
+
+                    <NavLink to='/home'>
+                        <Button color="inherit">Home</Button>
+                    </NavLink>
+                    <NavLink to='/exploreProducts'>
+                        <Button color="inherit">Explore Products</Button>
+                    </NavLink>
+
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
