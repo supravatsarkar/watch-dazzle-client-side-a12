@@ -1,5 +1,6 @@
 import { Divider } from '@mui/material';
 import React from 'react';
+import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 import Banner from '../Banner/Banner';
 import Contact from '../Contact/Contact';
@@ -14,6 +15,7 @@ const Home = () => {
             <ProductSection></ProductSection>
             <ReviewSection></ReviewSection>
             <Contact></Contact>
+            <Footer></Footer>
         </div>
     );
 };
