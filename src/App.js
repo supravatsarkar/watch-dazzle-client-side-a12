@@ -7,6 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ProductDetails from './Pages/Home/ProductDetails/ProductDetails';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/exploreProducts">
             <ExploreProducts></ExploreProducts>
+          </Route>
+          <Route path="/products/:id">
+            <ProductDetails></ProductDetails>
           </Route>
         </Switch>
       </Router>
