@@ -42,7 +42,10 @@ const ProductDetails = () => {
                                 ${price?.toFixed(2)}
                             </Typography>
                             <Typography variant="h4" sx={{ color: 'error.main', fontWeight: 600, my: 2 }}>
-                                ${price?.toFixed(2) * (discount / 100)} {discount}% OFF
+                                ${price?.toFixed(2) * (discount / 100)}
+                                <Typography variant="body" sx={{ fontWeight: 500, color: 'primary.main', mb: 3 }}>
+                                    {'  '}{discount}% OFF
+                                </Typography>
                             </Typography>
 
                             <Box gutterBottom variant="body" sx={{ display: 'block', fontWeight: 500 }}>

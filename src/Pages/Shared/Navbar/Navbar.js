@@ -26,8 +26,8 @@ const Navbar = () => {
                         Dazzle Watch
                     </Typography>
 
-                    <NavLink to='/home'>
-                        <Button color="inherit">Home</Button>
+                    <NavLink to='/home' style={{ textDecoration: 'none' }}>
+                        <Button variant="outlined">Home</Button>
                     </NavLink>
                     <NavLink to='/exploreProducts'>
                         <Button color="inherit">Explore Products</Button>

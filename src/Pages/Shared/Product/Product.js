@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { Typography, Grid, Button } from '@mui/material';
+import { Typography, Grid, Button, Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 const Product = ({ product }) => {
@@ -35,12 +35,14 @@ const Product = ({ product }) => {
                 <CardContent>
                 </CardContent>
                 <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography variant="body1" sx={{ color: 'text.secondary', fontWeight: 600, my: 2, textDecoration: 'line-through' }}>
-                        ${price?.toFixed(2)}
-                    </Typography>
-                    <Typography variant="h5" sx={{ color: 'error.main', fontWeight: 800 }}>
-                        ${price?.toFixed(2) * (discount / 100)}
-                    </Typography>
+                    <Box>
+                        <Typography variant="body1" sx={{ color: 'text.secondary', fontWeight: 600, textDecoration: 'line-through' }}>
+                            ${price?.toFixed(2)}
+                        </Typography>
+                        <Typography variant="h5" sx={{ color: 'error.main', fontWeight: 800, m: 0 }}>
+                            ${price?.toFixed(2) * (discount / 100)}
+                        </Typography>
+                    </Box>
                     <NavLink to={`/products/${_id}`} style={{ textDecoration: "none" }}>
                         <Button variant="contained" color="warning">Buy Now</Button>
                     </NavLink>
