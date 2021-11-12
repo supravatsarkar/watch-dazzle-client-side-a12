@@ -12,20 +12,24 @@ const ReviewSection = () => {
             .then(data => setReviews(data))
     }, [])
     return (
-        <Container sx={{ my: 5 }}>
-            <Box sx={{}}>
+        <Container >
+            <Box sx={{ mt: 5 }}>
+                <Typography variant='h3' sx={{ color: "warning.main", fontWeight: 800, mb: 1 }}>
+                    Customers Reviews
+                </Typography>
+                {/* <Box sx={{}}>
                 <Typography variant="h4" sx={{ display: 'inline', color: 'warning.main', fontWeight: 500, my: 4, borderBottom: 2, borderColor: 'warning.500', }}>Customers Reviews</Typography>
+            </Box> */}
+
+                <Grid container spacing={2} sx={{ my: 2 }}>
+                    {
+                        reviews.map(review => <Review
+                            key={review.id}
+                            review={review}
+                        ></Review>)
+                    }
+                </Grid>
             </Box>
-
-            <Grid container spacing={2} sx={{ my: 2 }}>
-                {
-                    reviews.map(review => <Review
-                        key={review.id}
-                        review={review}
-                    ></Review>)
-                }
-            </Grid>
-
         </Container>
     );
 };

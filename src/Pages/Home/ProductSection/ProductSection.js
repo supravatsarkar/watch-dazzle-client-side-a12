@@ -6,9 +6,12 @@ const ProductSection = () => {
     const productSize = 6;
     return (
         <div style={{}}>
-            <Box sx={{}}>
+            <Typography variant='h3' sx={{ color: "warning.main", fontWeight: 800, mb: 1 }}>
+                Today’s Deals
+            </Typography>
+            {/* <Box sx={{}}>
                 <Typography variant="h4" sx={{ display: 'inline', color: 'warning.main', fontWeight: 500, my: 2, borderBottom: 2, borderColor: 'warning.500', }}>Today’s Deals</Typography>
-            </Box>
+            </Box> */}
             <ProductCollection productSize={productSize}></ProductCollection>
         </div>
     );
