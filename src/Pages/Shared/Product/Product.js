@@ -35,8 +35,11 @@ const Product = ({ product }) => {
                 <CardContent>
                 </CardContent>
                 <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography variant="h6" sx={{ color: 'error.main', fontWeight: 600 }}>
-                        ${price.toFixed(2)}
+                    <Typography variant="body1" sx={{ color: 'text.secondary', fontWeight: 600, my: 2, textDecoration: 'line-through' }}>
+                        ${price?.toFixed(2)}
+                    </Typography>
+                    <Typography variant="h5" sx={{ color: 'error.main', fontWeight: 800 }}>
+                        ${price?.toFixed(2) * (discount / 100)}
                     </Typography>
                     <NavLink to={`/products/${_id}`} style={{ textDecoration: "none" }}>
                         <Button variant="contained" color="warning">Buy Now</Button>
