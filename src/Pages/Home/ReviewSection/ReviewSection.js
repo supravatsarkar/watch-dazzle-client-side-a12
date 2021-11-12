@@ -1,35 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Grid, Container } from '@mui/material';
 import Review from '../Review/Review';
 
-const reviews = [
-    {
-        id: 1,
-        name: 'Krish Sarkar',
-        comment: 'The elevation can be used to establish a hierachy between other content.',
-        rating: 4
-    },
-    {
-        id: 2,
-        name: 'Krish Sarkar',
-        comment: 'The elevation can be used to establish a hierachy between other content.',
-        rating: 4
-    },
-    {
-        id: 3,
-        name: 'Krish Sarkar',
-        comment: 'The elevation can be used to establish a hierachy between other content.',
-        rating: 4
-    },
-    {
-        id: 4,
-        name: 'Krish Sarkar',
-        comment: 'The elevation can be used to establish a hierachy between other content.',
-        rating: 4
-    },
-]
 
 const ReviewSection = () => {
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [])
     return (
         <Container sx={{ my: 5 }}>
             <Box sx={{}}>
