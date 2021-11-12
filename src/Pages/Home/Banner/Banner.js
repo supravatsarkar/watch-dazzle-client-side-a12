@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Grid, Typography, Button } from '@mui/material';
+import { NavLink } from "react-router-dom";
 import banner from '../../../images/banner/banner.png';
 import SharedCarousel from '../../Shared/SharedCarousel/SharedCarousel';
 
@@ -25,7 +26,9 @@ const Banner = () => {
                         <Typography variant="h2" sx={{ fontWeight: 700 }}>
                             UPTO 50% OFF
                         </Typography>
-                        <Button variant="contained" sx={{ fontWeight: 700 }}>Explore Collection</Button>
+                        <NavLink to='/exploreProducts' style={{ textDecoration: 'none' }}>
+                            <Button variant="outlined" size="large" color="warning" sx={{ fontWeight: 700, marginTop: 4 }}>Explore Collection</Button>
+                        </NavLink>
                     </Box>
                 </Grid>
             </Grid>

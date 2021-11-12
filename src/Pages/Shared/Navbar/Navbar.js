@@ -26,14 +26,16 @@ const Navbar = () => {
                         Dazzle Watch
                     </Typography>
 
-                    <NavLink to='/home' style={{ textDecoration: 'none' }}>
-                        <Button variant="outlined">Home</Button>
+                    <NavLink to='/home' style={{ textDecoration: 'none', marginRight: '5px' }}>
+                        <Button variant="contained" color="warning" size='small'>Home</Button>
                     </NavLink>
-                    <NavLink to='/exploreProducts'>
-                        <Button color="inherit">Explore Products</Button>
+                    <NavLink to='/exploreProducts' style={{ textDecoration: 'none', marginRight: '5px' }}>
+                        <Button variant="contained" color="warning" size='small'>Explore Products</Button>
                     </NavLink>
 
-                    <Button color="inherit">Login</Button>
+                    <NavLink to='/exploreProducts' style={{ textDecoration: 'none', marginRight: '5px' }}>
+                        <Button variant="contained" color="warning" size='small'>Login</Button>
+                    </NavLink>
                 </Toolbar>
             </AppBar>
         </Box>
