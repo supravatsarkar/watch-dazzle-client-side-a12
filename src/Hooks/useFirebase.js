@@ -32,12 +32,11 @@ const useFirebase = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user);
-                // alert('login success');
-                // ...
+                setError('');
             })
             .catch((error) => {
                 setError(error.message);
+                // alert(error.message);/
             })
             .finally(() => setLoading(false));
     }
@@ -53,7 +52,7 @@ const useFirebase = () => {
         setLoading(false)
     }, [])
 
-
+    console.log(error);
     const logout = () => {
         signOut(auth)
             .then(() => {

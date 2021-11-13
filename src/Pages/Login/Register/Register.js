@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Paper, TextField, Box, Container, Typography, Button, CircularProgress } from '@mui/material';
+import { Paper, TextField, Box, Container, Typography, Button, CircularProgress, Alert } from '@mui/material';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { NavLink } from 'react-router-dom';
-import useFirebase from '../../../Hooks/useFirebase';
+import useAuth from '../../../Hooks/useAuth';
 
 const Register = () => {
     const [loginInfo, setLoginInfo] = useState({});
-    const { register, loading } = useFirebase();
+    const { register, loading, error } = useAuth();
 
     const handleLoginInfo = e => {
         const field = e.target.name;
@@ -18,9 +18,15 @@ const Register = () => {
         // console.log(newLoginInfo);
     }
     const handleOnSubmit = e => {
-        const { email, password } = loginInfo;
-        register(email, password);
         e.preventDefault();
+        const { email, password, password2 } = loginInfo;
+
+        if (password !== password2) {
+            alert('Password not match!!')
+            return;
+        }
+        register(email, password);
+
     }
     return (
         <div>
@@ -72,6 +78,7 @@ const Register = () => {
                                 sx={{ width: '80%', mb: 3 }}
                                 color="warning" type="password" />
                             <br />
+                            <Alert severity="error">{error}</Alert>
                             <Button type='submit' variant="contained" color="warning">Create Account</Button>
                         </form>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

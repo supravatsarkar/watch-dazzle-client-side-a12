@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Paper, TextField, Box, Container, Typography, Button, CircularProgress } from '@mui/material';
+import { Paper, TextField, Box, Container, Typography, Button, CircularProgress, Alert } from '@mui/material';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { NavLink } from 'react-router-dom';
-import useFirebase from '../../../Hooks/useFirebase';
+import useAuth from '../../../Hooks/useAuth';
+
 
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({});
-    const { login, loading } = useFirebase();
+    const { login, loading, error } = useAuth();
     console.log('Loading', loading);
 
     const handleLoginInfo = e => {
@@ -59,6 +60,9 @@ const Login = () => {
                                 sx={{ width: '80%', mb: 3 }}
                                 color="warning" type="password" />
                             <br />
+                            {
+                                error && <Alert severity="error">{error}</Alert>
+                            }
                             <Button type='submit' variant="contained" color="warning">Login</Button>
                         </form>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>

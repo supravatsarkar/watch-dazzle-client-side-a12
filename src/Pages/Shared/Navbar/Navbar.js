@@ -7,10 +7,10 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from "react-router-dom";
-import useFirebase from '../../../Hooks/useFirebase';
+import useAuth from '../../../Hooks/useAuth';
 
 const Navbar = () => {
-    const { logout, user } = useFirebase();
+    const { logout, user } = useAuth();
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -29,6 +29,9 @@ const Navbar = () => {
                         Dazzle Watch
                     </Typography>
 
+                    <Typography variant="body1" component="p" sx={{ flexGrow: 1, }}>
+                        Logged In: {user.email}
+                    </Typography>
                     <NavLink to='/home' style={{ textDecoration: 'none', marginRight: '5px' }}>
                         <Button variant="contained" color="warning" size='small'>Home</Button>
                     </NavLink>
