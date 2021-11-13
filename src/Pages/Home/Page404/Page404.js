@@ -1,6 +1,7 @@
 import { Typography, Button } from '@mui/material';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 
 const Page404 = () => {
@@ -16,6 +17,7 @@ const Page404 = () => {
             <NavLink to="/" style={{ textDecoration: 'none' }}>
                 <Button variant="outlined">Go to Home</Button>
             </NavLink>
+            <Footer></Footer>
         </div>
     );
 };

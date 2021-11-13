@@ -5,7 +5,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <Container>
-            <Divider />
+            <Divider sx={{ mt: 5 }} />
             <Box sx={{ my: 3 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={4} sx={{ textAlign: 'left' }}>
@@ -54,9 +54,12 @@ const Footer = () => {
                     </Grid>
                 </Grid>
             </Box>
+
+            {/* Botom footer section*/}
             <Divider />
+
             <Box sx={{ mt: 1 }}>
-                <Grid container rowSpacing={{ xs: 2 }} columnSpacing={36}>
+                <Grid container rowSpacing={{ xs: 2 }} columnSpacing={48}>
                     <Grid item xs={12} md={6}>
                         <Typography variant="subtitle">Copyright &copy; Dazzle Watch. All Right Reserved.</Typography>
                     </Grid>

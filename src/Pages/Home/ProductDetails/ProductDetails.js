@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import { Grid, Typography, Button, Container, Divider } from '@mui/material';
 
 import Navbar from '../../Shared/Navbar/Navbar';
+import Footer from '../../Shared/Footer/Footer';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -76,6 +77,7 @@ const ProductDetails = () => {
                     </Grid>
                 </Grid>
             </Container>
+            <Footer></Footer>
         </div>
     );
 };
