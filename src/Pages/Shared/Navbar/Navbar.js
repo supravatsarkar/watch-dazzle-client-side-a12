@@ -33,13 +33,12 @@ const Navbar = () => {
                             Logged In: {user.email}
                         </Typography>
                     }
-                    <NavLink to='/home' style={{ textDecoration: 'none', marginRight: '5px' }}>
-                        <Button variant="contained" color="warning" size='small'>Home</Button>
+                    <NavLink to='/home' style={{ textDecoration: 'none', marginRight: '10px', color: 'white', fontWeight: '400', borderBottom: '2px solid white', padding: '8px' }}>
+                        Home
                     </NavLink>
-                    <NavLink to='/exploreProducts' style={{ textDecoration: 'none', marginRight: '5px' }}>
-                        <Button variant="contained" color="warning" size='small'>Explore Products</Button>
+                    <NavLink to='/exploreProducts' style={{ textDecoration: 'none', marginRight: '10px', color: 'white', fontWeight: '400', borderBottom: '2px solid white', padding: '8px' }}>
+                        Explore Products
                     </NavLink>
-
                     {
                         user.email ?
                             <Button onClick={logout} variant="contained" color="warning" size='small'>Logout</Button>

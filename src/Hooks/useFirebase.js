@@ -30,7 +30,7 @@ const useFirebase = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setError('');
-                const redirect_url = location.state.from || '/';
+                const redirect_url = location?.state?.from || '/';
                 history.push(redirect_url);
             })
             .catch((error) => {
