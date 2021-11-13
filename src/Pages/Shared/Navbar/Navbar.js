@@ -7,8 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from "react-router-dom";
+import useFirebase from '../../../Hooks/useFirebase';
 
 const Navbar = () => {
+    const { logout, user } = useFirebase();
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="fixed">
@@ -33,9 +36,14 @@ const Navbar = () => {
                         <Button variant="contained" color="warning" size='small'>Explore Products</Button>
                     </NavLink>
 
-                    <NavLink to='/exploreProducts' style={{ textDecoration: 'none', marginRight: '5px' }}>
-                        <Button variant="contained" color="warning" size='small'>Login</Button>
-                    </NavLink>
+                    {
+                        user.email ?
+                            <Button onClick={logout} variant="contained" color="warning" size='small'>Logout</Button>
+                            :
+                            <NavLink to='/login' style={{ textDecoration: 'none', marginRight: '5px' }}>
+                                <Button variant="contained" color="warning" size='small'>Login</Button>
+                            </NavLink>
+                    }
                 </Toolbar>
             </AppBar>
         </Box>
