@@ -28,10 +28,11 @@ const Navbar = () => {
                     <Typography variant="h4" component="h1" sx={{ flexGrow: 1, fontWeight: 500 }}>
                         Dazzle Watch
                     </Typography>
-
-                    <Typography variant="body1" component="p" sx={{ flexGrow: 1, }}>
-                        Logged In: {user.email}
-                    </Typography>
+                    {
+                        user.email && <Typography variant="body1" component="p" sx={{ flexGrow: 1 }}>
+                            Logged In: {user.email}
+                        </Typography>
+                    }
                     <NavLink to='/home' style={{ textDecoration: 'none', marginRight: '5px' }}>
                         <Button variant="contained" color="warning" size='small'>Home</Button>
                     </NavLink>

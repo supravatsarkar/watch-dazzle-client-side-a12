@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
-import { Paper, TextField, Box, Container, Typography, Button, CircularProgress, Alert } from '@mui/material';
+import {
+    Paper,
+    TextField,
+    Box, Container,
+    Typography,
+    Button,
+    CircularProgress,
+    Alert
+} from '@mui/material';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import {
+    useHistory,
+    useLocation
+} from "react-router-dom";
 
 
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({});
     const { login, loading, error } = useAuth();
     console.log('Loading', loading);
+    const history = useHistory();
+    const location = useLocation();
 
     const handleLoginInfo = e => {
         const field = e.target.name;
@@ -21,7 +35,7 @@ const Login = () => {
     }
     const handleOnSubmit = e => {
         const { email, password } = loginInfo;
-        login(email, password);
+        login(email, password, history, location);
         // console.log(loginInfo);
         e.preventDefault();
     }
@@ -50,7 +64,7 @@ const Login = () => {
                                 label="Email"
                                 variant="standard"
                                 sx={{ width: '80%', mb: 3 }}
-                                color="warning" type="email" />
+                                color="warning" type="email" required />
                             <TextField
                                 onBlur={handleLoginInfo}
                                 name="password"
@@ -58,7 +72,7 @@ const Login = () => {
                                 label="Password"
                                 variant="standard"
                                 sx={{ width: '80%', mb: 3 }}
-                                color="warning" type="password" />
+                                color="warning" type="password" required />
                             <br />
                             {
                                 error && <Alert severity="error">{error}</Alert>
@@ -66,7 +80,7 @@ const Login = () => {
                             <Button type='submit' variant="contained" color="warning">Login</Button>
                         </form>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <NavLink to="/register" style={{ textDecoration: 'none', fontWeight: '500' }}>Create Account</NavLink>
+                            <NavLink to="/register" style={{ textDecoration: 'none', fontWeight: '500' }}>Create an Account</NavLink>
                             <NavLink to="/" style={{ textDecoration: 'none', fontWeight: '500' }}>Reset Password</NavLink>
                         </Box>
                     </>

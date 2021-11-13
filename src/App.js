@@ -12,6 +12,7 @@ import Page404 from './Pages/Home/Page404/Page404';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
+import PrivateRoute from './Pages/Shared/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -28,9 +29,9 @@ function App() {
             <Route path="/exploreProducts">
               <ExploreProducts></ExploreProducts>
             </Route>
-            <Route path="/products/:id">
+            <PrivateRoute path="/products/:id">
               <ProductDetails></ProductDetails>
-            </Route>
+            </PrivateRoute>
             <Route path="/login">
               <Login></Login>
             </Route>

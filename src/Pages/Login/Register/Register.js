@@ -4,10 +4,15 @@ import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import {
+    useHistory,
+    useLocation
+} from "react-router-dom";
 
 const Register = () => {
     const [loginInfo, setLoginInfo] = useState({});
     const { register, loading, error } = useAuth();
+    const history = useHistory();
 
     const handleLoginInfo = e => {
         const field = e.target.name;
@@ -25,7 +30,7 @@ const Register = () => {
             alert('Password not match!!')
             return;
         }
-        register(email, password);
+        register(email, password, history);
 
     }
     return (
@@ -51,7 +56,7 @@ const Register = () => {
                                 label="Name"
                                 variant="standard"
                                 sx={{ width: '80%', mb: 3 }}
-                                color="warning" />
+                                color="warning" required />
                             <TextField
                                 onBlur={handleLoginInfo}
                                 name="email"
@@ -59,7 +64,7 @@ const Register = () => {
                                 label="Email"
                                 variant="standard"
                                 sx={{ width: '80%', mb: 3 }}
-                                color="warning" type="email" />
+                                color="warning" type="email" required />
                             <TextField
                                 onBlur={handleLoginInfo}
                                 name="password"
@@ -67,7 +72,7 @@ const Register = () => {
                                 label="Password"
                                 variant="standard"
                                 sx={{ width: '80%', mb: 3 }}
-                                color="warning" type="password" />
+                                color="warning" type="password" required />
                             <br />
                             <TextField
                                 onBlur={handleLoginInfo}
@@ -76,9 +81,11 @@ const Register = () => {
                                 label="Re Enter Password"
                                 variant="standard"
                                 sx={{ width: '80%', mb: 3 }}
-                                color="warning" type="password" />
+                                color="warning" type="password" required />
                             <br />
-                            <Alert severity="error">{error}</Alert>
+                            {
+                                error && <Alert severity="error">{error}</Alert>
+                            }
                             <Button type='submit' variant="contained" color="warning">Create Account</Button>
                         </form>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
