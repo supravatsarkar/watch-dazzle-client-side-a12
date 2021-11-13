@@ -35,6 +35,10 @@ const Login = () => {
     }
     const handleOnSubmit = e => {
         const { email, password } = loginInfo;
+        if (email === '' || password === '') {
+            alert('please carefully enter the filed');
+            return;
+        }
         login(email, password, history, location);
         // console.log(loginInfo);
         e.preventDefault();

@@ -39,9 +39,15 @@ const Navbar = () => {
                     <NavLink to='/exploreProducts' style={{ textDecoration: 'none', marginRight: '10px', color: 'white', fontWeight: '400', borderBottom: '2px solid white', padding: '8px' }}>
                         Explore Products
                     </NavLink>
+
                     {
-                        user.email ?
+                        user.email ? <>
+                            <NavLink to='/dashboard' style={{ textDecoration: 'none', marginRight: '10px', color: 'white', fontWeight: '400', borderBottom: '2px solid white', padding: '8px' }}>
+                                Dashboard
+                            </NavLink>
                             <Button onClick={logout} variant="contained" color="warning" size='small'>Logout</Button>
+                        </>
+
                             :
                             <NavLink to='/login' style={{ textDecoration: 'none', marginRight: '5px' }}>
                                 <Button variant="contained" color="warning" size='small'>Login</Button>
