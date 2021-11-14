@@ -33,8 +33,9 @@ import Pay from '../Pay/Pay';
 import DashboardInner from '../DashboardInner/DashboardInner';
 import AddReview from '../AddReview/AddReview';
 import MyOrder from '../MyOrder/MyOrder';
+import Footer from '../../Shared/Footer/Footer';
 
-const drawerWidth = 240;
+const drawerWidth = 150;
 
 const openedMixin = (theme) => ({
     width: drawerWidth,

@@ -9,8 +9,13 @@ import { Grid, Typography, Button, Container, Divider } from '@mui/material';
 
 import Navbar from '../../Shared/Navbar/Navbar';
 import Footer from '../../Shared/Footer/Footer';
+import PlaceOrderModal from '../../PlaceOrderModal/PlaceOrderModal';
 
 const ProductDetails = () => {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const { _id, name, img, brand, price, features, discount } = product;
@@ -23,10 +28,10 @@ const ProductDetails = () => {
             })
     }, [])
 
+
     return (
         <div>
             <Navbar></Navbar>
-            {/* <h2>Product Details of id: {id}</h2> */}
             <Container>
                 <Grid container spacing={6} sx={{ my: 2 }}>
                     <Grid item xs={12} md={6}>
@@ -71,8 +76,9 @@ const ProductDetails = () => {
                             </Box>
                             <Divider />
                             <NavLink to='#' style={{ textDecoration: "none", width: '100%' }}>
-                                <Button variant="contained" color="warning" sx={{ width: 1, mt: 3 }}>Buy Now</Button>
+                                <Button onClick={handleOpen} variant="contained" color="warning" sx={{ width: 1, mt: 3 }}>Place Order</Button>
                             </NavLink>
+                            <PlaceOrderModal product={product} open={open} handleClose={handleClose}></PlaceOrderModal>
                         </Paper>
                     </Grid>
                 </Grid>
