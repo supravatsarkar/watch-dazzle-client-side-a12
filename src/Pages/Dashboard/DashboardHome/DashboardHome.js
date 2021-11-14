@@ -3,7 +3,7 @@ import React from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import people from '../../../images/avatar.png'
 
-const DashboardInner = () => {
+const DashboardHome = () => {
     const { user, admin } = useAuth();
 
     return (
@@ -14,10 +14,10 @@ const DashboardInner = () => {
                 <Typography variant="h6" color="warning.main" sx={{ fontWeight: 600 }}>Name: {user.displayName}</Typography>
                 <Typography variant="h6" color="warning.main" sx={{ fontWeight: 300 }}>Email: {user.email}</Typography>
 
-                {/* <p>Role: {user.email}</p> */}
+                <Typography variant="h6" color="warning.main" sx={{ fontWeight: 500 }}>Role: {admin ? 'Admin' : 'Customer'}</Typography>
             </Paper>
         </div>
     );
 };
 
-export default DashboardInner;
+export default DashboardHome;

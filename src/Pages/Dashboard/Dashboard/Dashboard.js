@@ -22,6 +22,9 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import useAuth from '../../../Hooks/useAuth';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import {
     Switch,
     Route,
@@ -30,14 +33,18 @@ import {
     useRouteMatch
 } from "react-router-dom";
 import Pay from '../Pay/Pay';
-import DashboardInner from '../DashboardInner/DashboardInner';
+import DashboardHome from '../DashboardHome/DashboardHome';
 import AddReview from '../AddReview/AddReview';
 import MyOrder from '../MyOrder/MyOrder';
 import Footer from '../../Shared/Footer/Footer';
 import AdminRoute from '../../Shared/AdminRoute/AdminRoute';
 import PrivateRoute from '../../Shared/PrivateRoute/PrivateRoute';
+import ManageOrders from '../Admin/ManageOrders/ManageOrders';
+import AddProducts from '../Admin/AddProducts/AddProducts';
+import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
+import ManageProducts from '../Admin/ManageProducts/ManageProducts';
 
-const drawerWidth = 210;
+const drawerWidth = 230;
 
 const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -177,7 +184,7 @@ const Dashboard = () => {
                                 <NavLink to={`${url}/manageAllOrders`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <ListItem button >
                                         <ListItemIcon>
-                                            <PaymentIcon />
+                                            <ManageAccountsIcon />
                                         </ListItemIcon>
                                         <ListItemText primary='Manage All Orders' />
                                     </ListItem>
@@ -185,7 +192,7 @@ const Dashboard = () => {
                                 <NavLink to={`${url}/addProducts`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <ListItem button >
                                         <ListItemIcon>
-                                            <ProductionQuantityLimitsIcon />
+                                            <AddShoppingCartIcon />
                                         </ListItemIcon>
                                         <ListItemText primary='Add Products' />
                                     </ListItem>
@@ -193,7 +200,7 @@ const Dashboard = () => {
                                 <NavLink to={`${url}/makeAdmin`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <ListItem button >
                                         <ListItemIcon>
-                                            <ReviewsIcon />
+                                            <SupervisorAccountIcon />
                                         </ListItemIcon>
                                         <ListItemText primary='Make Admin' />
                                     </ListItem>
@@ -248,7 +255,7 @@ const Dashboard = () => {
 
                     <Switch>
                         <PrivateRoute exact path={path}>
-                            <DashboardInner></DashboardInner>
+                            <DashboardHome></DashboardHome>
                         </PrivateRoute>
                         <PrivateRoute path={`${path}/pay`}>
                             <Pay></Pay>
@@ -261,16 +268,16 @@ const Dashboard = () => {
                         </PrivateRoute>
                         {/* Admin Routes */}
                         <AdminRoute path={`${path}/manageAllOrders`}>
-                            <h2>manageAllOrders</h2>
+                            <ManageOrders></ManageOrders>
                         </AdminRoute>
                         <AdminRoute path={`${path}/addProducts`}>
-                            <h2>addProducts</h2>
+                            <AddProducts></AddProducts>
                         </AdminRoute>
                         <AdminRoute path={`${path}/makeAdmin`}>
-                            <h2>makeAdmin</h2>
+                            <MakeAdmin></MakeAdmin>
                         </AdminRoute>
                         <AdminRoute path={`${path}/manageProducts`}>
-                            <h2>manageProducts</h2>
+                            <ManageProducts></ManageProducts>
                         </AdminRoute>
 
                     </Switch>
@@ -282,3 +289,4 @@ const Dashboard = () => {
 }
 
 export default Dashboard;
+// DashboardInner

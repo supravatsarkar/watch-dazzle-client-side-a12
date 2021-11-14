@@ -26,7 +26,9 @@ export default function PlaceOrderModal({ open, handleClose, product }) {
         const email = user.email;
         const field = e.target.name;
         const value = e.target.value;
-        const newOrderInfo = { ...orderInfo, productId, email: email };
+        const time = new Date();
+        const status = 'Pending'
+        const newOrderInfo = { ...orderInfo, productId, email: email, time, status };
         newOrderInfo[field] = value;
         console.log(newOrderInfo);
         setOrderInfo(newOrderInfo);
@@ -74,6 +76,7 @@ export default function PlaceOrderModal({ open, handleClose, product }) {
                             name="name"
                             id="outlined-basic"
                             label="Name"
+                            defaultValue={user.displayName}
                             variant="outlined" required
                             color="warning"
                             sx={{ width: 1, my: 1 }}

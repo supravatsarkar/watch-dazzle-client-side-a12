@@ -21,7 +21,7 @@ const MyOrder = () => {
     }, [dataLoad])
 
     const deleteOrder = (id) => {
-        const confirm = window.confirm('Are you delete this?');
+        const confirm = window.confirm('Are you delete order?');
         console.log('hit id-', id);
         if (confirm) {
             fetch(`http://localhost:5000/orders/?id=${id}`, {

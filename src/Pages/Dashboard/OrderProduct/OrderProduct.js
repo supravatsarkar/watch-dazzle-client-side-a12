@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const OrderProduct = ({ order, deleteOrder }) => {
-    const { productId } = order;
+    const { productId, status } = order;
     const [product, setProduct] = useState({});
     const { img, name, price, brand, discount } = product;
     useEffect(() => {
@@ -16,7 +16,7 @@ const OrderProduct = ({ order, deleteOrder }) => {
     }, [])
     console.log('img load', img);
     return (
-        <Grid item xs={6} sm={4} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
             <Card sx={{}}>
                 {
                     img ? <CardMedia
@@ -27,10 +27,10 @@ const OrderProduct = ({ order, deleteOrder }) => {
                     /> : <div>Loading...</div>
                 }
                 <CardContent>
-                    <Typography gutterBottom variant="h6" component="h6">
+                    <Typography gutterBottom variant="subtitle2" component="h5">
                         {name}
                     </Typography>
-                    <Typography variant="h6" color="warning.main">
+                    <Typography gutterBottom variant="subtitle2" component="h5" color="warning.main">
                         Price: ${price * (discount / 100)}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -38,8 +38,11 @@ const OrderProduct = ({ order, deleteOrder }) => {
                         {/* _id:{order._id} */}
                     </Typography>
                 </CardContent>
+                <Typography gutterBottom variant="subtitle2" component="h5" color="warning.main">
+                    Status: {status}
+                </Typography>
                 <CardActions>
-                    <Button onClick={() => deleteOrder(order._id)}><DeleteForeverIcon /> Delete</Button>
+                    <Button onClick={() => deleteOrder(order._id)}><DeleteForeverIcon /> Delete Order</Button>
                 </CardActions>
             </Card>
         </Grid>
