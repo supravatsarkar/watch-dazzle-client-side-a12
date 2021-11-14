@@ -9,6 +9,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
+    const [adminLoading, setAdminLoading] = useState(true);
     const [saveUser, setSaveUser] = useState({});
     const [admin, setAdmin] = useState(false);
 
@@ -54,6 +55,7 @@ const useFirebase = () => {
 
     // observer user auth 
     useEffect(() => {
+
         setLoading(true);
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -69,12 +71,14 @@ const useFirebase = () => {
 
     //check admin
     useEffect(() => {
+        setAdminLoading(true)
         console.log('run check admin');
         fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setAdmin(data.admin);
+                setAdminLoading(false)
             })
     }, [user.email])
 
@@ -108,6 +112,7 @@ const useFirebase = () => {
         user,
         error,
         loading,
+        adminLoading,
         admin
     };
 };
