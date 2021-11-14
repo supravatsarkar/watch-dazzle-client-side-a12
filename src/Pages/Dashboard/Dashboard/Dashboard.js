@@ -34,8 +34,10 @@ import DashboardInner from '../DashboardInner/DashboardInner';
 import AddReview from '../AddReview/AddReview';
 import MyOrder from '../MyOrder/MyOrder';
 import Footer from '../../Shared/Footer/Footer';
+import AdminRoute from '../../Shared/AdminRoute/AdminRoute';
+import PrivateRoute from '../../Shared/PrivateRoute/PrivateRoute';
 
-const drawerWidth = 150;
+const drawerWidth = 210;
 
 const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -103,8 +105,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const Dashboard = () => {
-    const { user, logout } = useAuth();
+    const { user, admin, logout } = useAuth();
     const { path, url } = useRouteMatch();
+
+    console.log('dashboard', admin);
 
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -152,56 +156,90 @@ const Dashboard = () => {
                     </DrawerHeader>
                     <Divider />
                     <List>
+                        <NavLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <ListItem button >
+                                <ListItemIcon>
+                                    <ArrowBackIcon />
+                                </ListItemIcon>
+                                <ListItemText primary='Go Back' />
+                            </ListItem>
+                        </NavLink>
+                        <NavLink to={`${url}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <ListItem button >
+                                <ListItemIcon>
+                                    <HomeIcon />
+                                </ListItemIcon>
+                                <ListItemText primary='Home' />
+                            </ListItem>
+                        </NavLink>
                         {
-                            <>
-                                <NavLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <ListItem button >
-                                        <ListItemIcon>
-                                            <ArrowBackIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary='Go Back' />
-                                    </ListItem>
-                                </NavLink>
-                                <NavLink to={`${url}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <ListItem button >
-                                        <ListItemIcon>
-                                            <HomeIcon />
-                                        </ListItemIcon>
-                                        <ListItemText primary='Home' />
-                                    </ListItem>
-                                </NavLink>
-                                <NavLink to={`${url}/pay`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            admin ? <>
+                                <NavLink to={`${url}/manageAllOrders`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <ListItem button >
                                         <ListItemIcon>
                                             <PaymentIcon />
                                         </ListItemIcon>
-                                        <ListItemText primary='Pay' />
+                                        <ListItemText primary='Manage All Orders' />
                                     </ListItem>
                                 </NavLink>
-                                <NavLink to={`${url}/myOrder`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <NavLink to={`${url}/addProducts`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <ListItem button >
                                         <ListItemIcon>
                                             <ProductionQuantityLimitsIcon />
                                         </ListItemIcon>
-                                        <ListItemText primary='My Order' />
+                                        <ListItemText primary='Add Products' />
                                     </ListItem>
                                 </NavLink>
-                                <NavLink to={`${url}/review`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <NavLink to={`${url}/makeAdmin`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <ListItem button >
                                         <ListItemIcon>
                                             <ReviewsIcon />
                                         </ListItemIcon>
-                                        <ListItemText primary='Review' />
+                                        <ListItemText primary='Make Admin' />
                                     </ListItem>
                                 </NavLink>
-                                <ListItem button onClick={logout}>
-                                    <ListItemIcon>
-                                        <LogoutIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary='Logout' />
-                                </ListItem>
-                            </>
+                                <NavLink to={`${url}/manageProducts`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <ListItem button >
+                                        <ListItemIcon>
+                                            <ReviewsIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary='Manage Products' />
+                                    </ListItem>
+                                </NavLink>
+                            </> :
+                                <>
+                                    <NavLink to={`${url}/pay`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        <ListItem button >
+                                            <ListItemIcon>
+                                                <PaymentIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Pay' />
+                                        </ListItem>
+                                    </NavLink>
+                                    <NavLink to={`${url}/myOrder`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        <ListItem button >
+                                            <ListItemIcon>
+                                                <ProductionQuantityLimitsIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='My Order' />
+                                        </ListItem>
+                                    </NavLink>
+                                    <NavLink to={`${url}/review`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        <ListItem button >
+                                            <ListItemIcon>
+                                                <ReviewsIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Review' />
+                                        </ListItem>
+                                    </NavLink>
+                                </>
                         }
+                        <ListItem button onClick={logout}>
+                            <ListItemIcon>
+                                <LogoutIcon />
+                            </ListItemIcon>
+                            <ListItemText primary='Logout' />
+                        </ListItem>
                     </List>
                     <Divider />
                 </Drawer>
@@ -209,18 +247,32 @@ const Dashboard = () => {
                     <DrawerHeader />
 
                     <Switch>
-                        <Route exact path={path}>
+                        <PrivateRoute exact path={path}>
                             <DashboardInner></DashboardInner>
-                        </Route>
-                        <Route path={`${path}/pay`}>
+                        </PrivateRoute>
+                        <PrivateRoute path={`${path}/pay`}>
                             <Pay></Pay>
-                        </Route>
-                        <Route path={`${path}/myOrder`}>
+                        </PrivateRoute>
+                        <PrivateRoute path={`${path}/myOrder`}>
                             <MyOrder></MyOrder>
-                        </Route>
-                        <Route path={`${path}/review`}>
+                        </PrivateRoute>
+                        <PrivateRoute path={`${path}/review`}>
                             <AddReview></AddReview>
-                        </Route>
+                        </PrivateRoute>
+                        {/* Admin Routes */}
+                        <AdminRoute path={`${path}/manageAllOrders`}>
+                            <h2>manageAllOrders</h2>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/addProducts`}>
+                            <h2>addProducts</h2>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/makeAdmin`}>
+                            <h2>makeAdmin</h2>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageProducts`}>
+                            <h2>manageProducts</h2>
+                        </AdminRoute>
+
                     </Switch>
                     {/* <Footer></Footer> */}
                 </Box>
