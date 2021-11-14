@@ -14,17 +14,17 @@ const OrderProduct = ({ order, deleteOrder }) => {
                 setProduct(data);
             })
     }, [])
-    // console.log(img);
+    console.log('img load', img);
     return (
         <Grid item xs={6} sm={4} md={3}>
             <Card sx={{}}>
                 {
-                    img && <CardMedia
+                    img ? <CardMedia
                         component="img"
                         // height="140"
                         image={img}
                         alt="green iguana"
-                    />
+                    /> : <div>Loading...</div>
                 }
                 <CardContent>
                     <Typography gutterBottom variant="h6" component="h6">
@@ -35,7 +35,7 @@ const OrderProduct = ({ order, deleteOrder }) => {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         Brand: {brand}
-                        _id:{order._id}
+                        {/* _id:{order._id} */}
                     </Typography>
                 </CardContent>
                 <CardActions>

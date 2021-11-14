@@ -20,17 +20,17 @@ const Register = () => {
         const newLoginInfo = { ...loginInfo };
         newLoginInfo[field] = value;
         setLoginInfo(newLoginInfo);
-        // console.log(newLoginInfo);
+        console.log(newLoginInfo);
     }
     const handleOnSubmit = e => {
         e.preventDefault();
-        const { email, password, password2 } = loginInfo;
+        const { name, email, password, password2 } = loginInfo;
 
         if (password !== password2) {
             alert('Password not match!!')
             return;
         }
-        register(email, password, history);
+        register(email, password, name, history);
 
     }
     return (
