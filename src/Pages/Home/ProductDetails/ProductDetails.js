@@ -18,7 +18,7 @@ const ProductDetails = () => {
 
     const { id } = useParams();
     const [product, setProduct] = useState({});
-    const { _id, name, img, brand, price, features, discount, description } = product;
+    const { _id, productName, img, brand, price, features, discount, description } = product;
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
@@ -42,7 +42,7 @@ const ProductDetails = () => {
                     <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start" }}>
                         <Paper sx={{ textAlign: 'left', p: 2, width: 1 }}>
                             <Typography variant="h4" sx={{ fontWeight: 500, color: 'text.secondary' }}>
-                                {name}
+                                {productName}
                             </Typography>
                             <Typography variant="body1" sx={{ color: 'text.secondary', fontWeight: 600, my: 2, textDecoration: 'line-through' }}>
                                 ${price?.toFixed(2)}

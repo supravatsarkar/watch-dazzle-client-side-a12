@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Card, Typography, CardContent, CardMedia, CardActions, Button, Grid, Box, Divider } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
+import { NavLink, useRouteMatch } from 'react-router-dom';
 
 const SingleProduct = ({ product, deleteOrder }) => {
 
     const { _id, img, productName, price, discount, brand, features } = product;
+    const { path, url } = useRouteMatch();
 
     return (
         <Grid item xs={12} sm={6} md={3}>
@@ -46,7 +48,9 @@ const SingleProduct = ({ product, deleteOrder }) => {
                 <Button variant="outlined" size='small' sx={{
                     my: 1
                 }} onClick={() => deleteOrder(_id)}><DeleteForeverIcon />Delete Product</Button>
-                <Button variant="outlined" size='small' sx={{ mb: 1 }} ><EditIcon /> Edit Product</Button>
+                <NavLink to={`${url}/${_id}`}>
+                    <Button variant="outlined" size='small' sx={{ mb: 1 }} ><EditIcon /> Edit Product</Button>
+                </NavLink>
             </Card>
         </Grid>
     );

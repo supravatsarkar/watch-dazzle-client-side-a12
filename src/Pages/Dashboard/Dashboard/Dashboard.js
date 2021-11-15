@@ -43,6 +43,7 @@ import ManageOrders from '../Admin/ManageOrders/ManageOrders';
 import AddProducts from '../Admin/AddProducts/AddProducts';
 import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
 import ManageProducts from '../Admin/ManageProducts/ManageProducts';
+import EditProduct from '../Admin/EditProduct/EditProduct';
 
 const drawerWidth = 230;
 
@@ -276,8 +277,11 @@ const Dashboard = () => {
                         <AdminRoute path={`${path}/makeAdmin`}>
                             <MakeAdmin></MakeAdmin>
                         </AdminRoute>
-                        <AdminRoute path={`${path}/manageProducts`}>
+                        <AdminRoute exact path={`${path}/manageProducts`}>
                             <ManageProducts></ManageProducts>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageProducts/:id`}>
+                            <EditProduct></EditProduct>
                         </AdminRoute>
 
                     </Switch>
