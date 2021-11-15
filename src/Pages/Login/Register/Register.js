@@ -50,7 +50,7 @@ const Register = () => {
                         </Box>
                         <form onSubmit={handleOnSubmit} style={{ marginBottom: '10px', }}>
                             <TextField
-                                onBlur={handleLoginInfo}
+                                onChange={handleLoginInfo}
                                 name="name"
                                 id="standard-basic"
                                 label="Name"
@@ -58,7 +58,7 @@ const Register = () => {
                                 sx={{ width: '80%', mb: 3 }}
                                 color="warning" required />
                             <TextField
-                                onBlur={handleLoginInfo}
+                                onChange={handleLoginInfo}
                                 name="email"
                                 id="standard-basic"
                                 label="Email"
@@ -66,7 +66,7 @@ const Register = () => {
                                 sx={{ width: '80%', mb: 3 }}
                                 color="warning" type="email" required />
                             <TextField
-                                onBlur={handleLoginInfo}
+                                onChange={handleLoginInfo}
                                 name="password"
                                 id="standard-basic"
                                 label="Password"
@@ -75,7 +75,7 @@ const Register = () => {
                                 color="warning" type="password" required />
                             <br />
                             <TextField
-                                onBlur={handleLoginInfo}
+                                onChange={handleLoginInfo}
                                 name="password2"
                                 id="standard-basic"
                                 label="Re Enter Password"

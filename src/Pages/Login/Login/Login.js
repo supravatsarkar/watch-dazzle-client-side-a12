@@ -62,7 +62,7 @@ const Login = () => {
                         </Box>
                         <form onSubmit={handleOnSubmit} style={{ marginBottom: '10px', }}>
                             <TextField
-                                onBlur={handleLoginInfo}
+                                onChange={handleLoginInfo}
                                 name="email"
                                 id="standard-basic"
                                 label="Email"
@@ -70,7 +70,7 @@ const Login = () => {
                                 sx={{ width: '80%', mb: 3 }}
                                 color="warning" type="email" required />
                             <TextField
-                                onBlur={handleLoginInfo}
+                                onChange={handleLoginInfo}
                                 name="password"
                                 id="standard-basic"
                                 label="Password"

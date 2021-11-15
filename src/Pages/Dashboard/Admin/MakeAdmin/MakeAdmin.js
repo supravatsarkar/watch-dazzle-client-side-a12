@@ -12,7 +12,7 @@ const MakeAdmin = () => {
 
     const handleOnSubmit = e => {
         console.log('hit submit', email);
-        fetch(`http://localhost:5000/users/${email}`, {
+        fetch(`http://localhost:5000/users/makeAdmin/${email}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -49,6 +49,7 @@ const MakeAdmin = () => {
                             variant="outlined"
                             sx={{ width: 1, mb: 1 }}
                             color="warning"
+                            type="email"
                             required />
                         <Button type="submit" variant="contained" color="warning" sx={{ display: 'block', textAlign: 'center' }}>Make Admin</Button>
                     </form>
