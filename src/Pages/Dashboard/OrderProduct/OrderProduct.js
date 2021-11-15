@@ -6,11 +6,22 @@ const OrderProduct = ({ order, deleteOrder }) => {
     const { productId, status } = order;
     const [product, setProduct] = useState({});
     const { img, productName, price, brand, discount } = product;
+    const notAvailableProduct = {
+        img: 'Not Available',
+        productName: 'Product deleted from database',
+        price: 'Not Available',
+        discount: 'Not Available'
+    }
     useEffect(() => {
         fetch(`http://localhost:5000/products/${productId}`)
             .then(res => res.json())
             .then(data => {
-                setProduct(data);
+                if (data) {
+                    setProduct(data);
+                } else {
+                    setProduct(notAvailableProduct);
+                }
+
             })
     }, [])
 
@@ -22,7 +33,7 @@ const OrderProduct = ({ order, deleteOrder }) => {
                         component="img"
                         // height="140"
                         image={img}
-                        alt="green iguana"
+                        alt="image not available"
                     /> : <div>Loading...</div>
                 }
                 <CardContent>
