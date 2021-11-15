@@ -26,7 +26,7 @@ const Product = ({ product }) => {
                     <Typography gutterBottom variant="h5" component="div">
                         {productName}
                     </Typography>
-                    <Typography variant="body" component="body" sx={{ color: 'text.secondary', fontWeight: 500 }}>
+                    <Typography variant="body" component="div" sx={{ color: 'text.secondary', fontWeight: 500 }}>
                         Brand: {brand}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">

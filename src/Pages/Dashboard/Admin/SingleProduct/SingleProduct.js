@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Typography, CardContent, CardMedia, CardActions, Button, Grid, Box, Divider } from '@mui/material';
+import React from 'react';
+import { Card, Typography, CardContent, CardMedia, CardActions, Button, Grid, Box, Divider, CircularProgress } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import { NavLink, useRouteMatch } from 'react-router-dom';
@@ -18,7 +18,7 @@ const SingleProduct = ({ product, deleteOrder }) => {
                         // height="140px"
                         image={img}
                         alt="green iguana"
-                    /> : <div>Loading...</div>
+                    /> : <CircularProgress />
                 }
                 <CardContent>
                     <Typography variant="body" component="div" sx={{ color: 'error.main', fontWeight: 500 }}>
@@ -27,7 +27,7 @@ const SingleProduct = ({ product, deleteOrder }) => {
                     <Typography variant="subtitle2" component="h6">
                         {productName}
                     </Typography>
-                    <Typography variant="body" component="body" sx={{ color: 'warning.main', fontWeight: 500, }}>
+                    <Typography variant="body" component="div" sx={{ color: 'warning.main', fontWeight: 500, }}>
                         Brand: {brand}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -48,7 +48,7 @@ const SingleProduct = ({ product, deleteOrder }) => {
                 <Button variant="outlined" size='small' sx={{
                     my: 1
                 }} onClick={() => deleteOrder(_id)}><DeleteForeverIcon />Delete Product</Button>
-                <NavLink to={`${url}/${_id}`}>
+                <NavLink to={`${url}/${_id}`} style={{ textDecoration: 'none' }}>
                     <Button variant="outlined" size='small' sx={{ mb: 1 }} ><EditIcon /> Edit Product</Button>
                 </NavLink>
             </Card>
