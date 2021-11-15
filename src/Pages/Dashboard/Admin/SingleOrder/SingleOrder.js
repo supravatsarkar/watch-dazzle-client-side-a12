@@ -34,7 +34,7 @@ const SingleOrder = ({ order, deleteOrder, handleStatus }) => {
                         {name}
                     </Typography>
                     <Typography gutterBottom variant="subtitle2" component="h6" color="warning.main">
-                        Price: ${price * (discount / 100)}
+                        Price: ${(price * (discount / 100)).toFixed(2)}
                     </Typography>
                     <Typography variant="subtitle2" color="text.secondary">
                         User Email: {email}

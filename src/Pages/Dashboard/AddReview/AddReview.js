@@ -7,6 +7,7 @@ const AddReview = () => {
     const [ratingValue, setRatingValue] = React.useState(1);
     const { user } = useAuth();
     const [reviewInfo, setReviewInfo] = useState({});
+    const [isAlert, setisAlert] = useState(false);
 
     // console.log(user);
     const handleOnBlur = e => {
@@ -34,12 +35,14 @@ const AddReview = () => {
             .then(data => {
                 if (data.insertedId) {
                     alert('Review added successfully');
+                    e.target.reset();
+                    setRatingValue(1);
                 }
             })
         e.preventDefault();
 
     }
-    console.log('Review Info-', user);
+
     return (
         <div>
             <Typography variant="h4" color="error.main" sx={{ fontWeight: 600, borderBottom: 1, borderColor: 'error.main', mb: 2 }}>

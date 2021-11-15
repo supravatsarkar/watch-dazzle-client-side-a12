@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 
 const Product = ({ product }) => {
 
-    const { _id, name, img, brand, price, features, discount } = product;
+    const { _id, productName, img, brand, price, features, discount } = product;
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card sx={{}}>
@@ -24,7 +24,7 @@ const Product = ({ product }) => {
                         {discount}% OFF
                     </Typography>
                     <Typography gutterBottom variant="h5" component="div">
-                        {name}
+                        {productName}
                     </Typography>
                     <Typography variant="body" component="body" sx={{ color: 'text.secondary', fontWeight: 500 }}>
                         Brand: {brand}
@@ -42,7 +42,7 @@ const Product = ({ product }) => {
                             ${price?.toFixed(2)}
                         </Typography>
                         <Typography variant="h5" sx={{ color: 'error.main', fontWeight: 800, m: 0 }}>
-                            ${price?.toFixed(2) * (discount / 100)}
+                            ${(price * (discount / 100)).toFixed(2)}
                         </Typography>
                     </Box>
                     <NavLink to={`/products/${_id}`} style={{ textDecoration: "none" }}>

@@ -31,7 +31,7 @@ const OrderProduct = ({ order, deleteOrder }) => {
                         {name}
                     </Typography>
                     <Typography gutterBottom variant="subtitle2" component="h5" color="warning.main">
-                        Price: ${price * (discount / 100)}
+                        Price: ${(price * (discount / 100)).toFixed(2)}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         Brand: {brand}
