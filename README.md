@@ -1,6 +1,8 @@
-client side repo link:-- https://github.com/programming-hero-web-course-4/niche-website-client-side-supravatsarkar
-Server side repo link:-- https://github.com/programming-hero-web-course-4/niche-website-server-side-supravatsarkar
-live site:-- https://dazzle-watch-mern.web.app/
+### client side repo link:-- https://github.com/programming-hero-web-course-4/niche-website-client-side-supravatsarkar
+
+### Server side repo link:-- https://github.com/programming-hero-web-course-4/niche-website-server-side-supravatsarkar
+
+### Live link: https://dazzle-watch-mern.web.app/
 
 # Welcome to Dazzle Watch Web Application
 ## What is Dazzle Watch?
@@ -14,7 +16,7 @@ live site:-- https://dazzle-watch-mern.web.app/
 * Google Firebase for authentication and client side hosting 
 * Heroku for server side hosting.
 
-### Live link: https://dazzle-watch-mern.web.app/
+
 ### Feature of Dental House Application:
 
  ## Normal User
@@ -42,9 +44,9 @@ live site:-- https://dazzle-watch-mern.web.app/
     - Logout:- Logout from application
 
  
- * * By Supravat Sarkar
+ # By Supravat Sarkar
  
-## ====================Thanking You========================= 
+## =========Thanking You===========
 
 
 
