@@ -22,7 +22,7 @@ const AddReview = () => {
     reviewInfo.userImg = user.photoURL;
 
     const handleOnSubmit = e => {
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://fierce-river-92206.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

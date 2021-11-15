@@ -10,7 +10,7 @@ const ManageOrders = () => {
     const [orders, setOrder] = useState([]);
     const [dataLoad, setDataLoad] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://fierce-river-92206.herokuapp.com/allOrders')
             .then(res => res.json())
             .then(data => {
                 setOrder(data);
@@ -21,7 +21,7 @@ const ManageOrders = () => {
     const deleteOrder = (id) => {
         const confirm = window.confirm('Are you delete order?');
         if (confirm) {
-            fetch(`http://localhost:5000/orders/?id=${id}`, {
+            fetch(`https://fierce-river-92206.herokuapp.com/orders/?id=${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
@@ -35,7 +35,7 @@ const ManageOrders = () => {
     }
 
     const handleStatus = id => {
-        fetch(`http://localhost:5000/allOrders/${id}`, {
+        fetch(`https://fierce-river-92206.herokuapp.com/allOrders/${id}`, {
             method: 'PUT',
         })
             .then(res => res.json())

@@ -11,7 +11,7 @@ const MyOrder = () => {
     const [dataLoad, setDataLoad] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/?email=${user.email}`)
+        fetch(`https://fierce-river-92206.herokuapp.com/orders/?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setOrder(data);
@@ -23,7 +23,7 @@ const MyOrder = () => {
         const confirm = window.confirm('Are you delete order?');
 
         if (confirm) {
-            fetch(`http://localhost:5000/orders/?id=${id}`, {
+            fetch(`https://fierce-river-92206.herokuapp.com/orders/?id=${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

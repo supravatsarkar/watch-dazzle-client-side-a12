@@ -7,7 +7,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     const [dataLoad, setDataLoad] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://fierce-river-92206.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
@@ -18,7 +18,7 @@ const ManageProducts = () => {
     const deleteOrder = (id) => {
         const confirm = window.confirm('Are you delete product?');
         if (confirm) {
-            fetch(`http://localhost:5000/products/?id=${id}`, {
+            fetch(`https://fierce-river-92206.herokuapp.com/products/?id=${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

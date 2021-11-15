@@ -15,7 +15,7 @@ const SingleOrder = ({ order, deleteOrder, handleStatus }) => {
         discount: 'Not Available'
     }
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://fierce-river-92206.herokuapp.com/products/${productId}`)
             .then(res => res.json())
             .then(data => {
                 if (data) {

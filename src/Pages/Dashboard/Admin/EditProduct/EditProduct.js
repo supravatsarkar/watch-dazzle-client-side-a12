@@ -12,7 +12,7 @@ const EditProduct = () => {
     const { _id, productName, img, brand, price, features, discount, description } = product;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://fierce-river-92206.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -33,7 +33,7 @@ const EditProduct = () => {
     }
 
     const handleOnSubmit = e => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://fierce-river-92206.herokuapp.com/products/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

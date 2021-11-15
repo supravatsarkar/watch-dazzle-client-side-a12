@@ -10,7 +10,7 @@ const MakeAdmin = () => {
     }
 
     const handleOnSubmit = e => {
-        fetch(`http://localhost:5000/users/makeAdmin/${email}`, {
+        fetch(`https://fierce-river-92206.herokuapp.com/users/makeAdmin/${email}`, {
             method: 'PUT',
         })
             .then(res => res.json())

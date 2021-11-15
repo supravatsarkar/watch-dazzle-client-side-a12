@@ -71,7 +71,7 @@ const useFirebase = () => {
     //check admin
     useEffect(() => {
         setAdminLoading(true)
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://fierce-river-92206.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin);
@@ -89,7 +89,7 @@ const useFirebase = () => {
     }
 
     const saveUserDb = (userInfo) => {
-        fetch('http://localhost:5000/users', {
+        fetch('https://fierce-river-92206.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -35,7 +35,7 @@ export default function PlaceOrderModal({ open, handleClose, product }) {
 
     const handleOnSubmit = e => {
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://fierce-river-92206.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
