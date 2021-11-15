@@ -9,7 +9,6 @@ const AddReview = () => {
     const [reviewInfo, setReviewInfo] = useState({});
     const [isAlert, setisAlert] = useState(false);
 
-    // console.log(user);
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -23,7 +22,6 @@ const AddReview = () => {
     reviewInfo.userImg = user.photoURL;
 
     const handleOnSubmit = e => {
-        // console.log('Review Info-', reviewInfo);
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {

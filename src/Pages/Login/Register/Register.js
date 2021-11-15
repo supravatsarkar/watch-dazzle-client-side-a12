@@ -20,7 +20,7 @@ const Register = () => {
         const newLoginInfo = { ...loginInfo };
         newLoginInfo[field] = value;
         setLoginInfo(newLoginInfo);
-        console.log(newLoginInfo);
+
     }
     const handleOnSubmit = e => {
         e.preventDefault();

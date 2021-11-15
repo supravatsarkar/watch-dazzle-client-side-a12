@@ -2,14 +2,13 @@ import { Grid, Typography, Box } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import OrderProduct from '../OrderProduct/OrderProduct';
-
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const MyOrder = () => {
     const { user } = useAuth();
     const [orders, setOrder] = useState([]);
     const [dataLoad, setDataLoad] = useState(false);
-    console.log('My Order, -', orders);
 
     useEffect(() => {
         fetch(`http://localhost:5000/orders/?email=${user.email}`)
@@ -22,14 +21,14 @@ const MyOrder = () => {
 
     const deleteOrder = (id) => {
         const confirm = window.confirm('Are you delete order?');
-        console.log('hit id-', id);
+
         if (confirm) {
             fetch(`http://localhost:5000/orders/?id=${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+
                     if (data.deletedCount >= 1) {
                         alert('delete successful');
                         setDataLoad(true);
@@ -45,21 +44,22 @@ const MyOrder = () => {
             <Typography variant="h6" sx={{}}>
                 Total Order: {orders.length}
             </Typography>
-            {/* <Typography variant="h6" sx={{color:"warning.main"}}>
-                Total Price: {orders.length}
-            </Typography> */}
 
-            <Box container >
-                <Grid container spacing={2}>
-                    {
-                        orders.map(order => <OrderProduct
-                            key={order._id}
-                            order={order}
-                            deleteOrder={deleteOrder}
-                        ></OrderProduct>)
-                    }
-                </Grid>
-            </Box>
+            {
+                orders.length ? <Box container >
+                    <Grid container spacing={2}>
+                        {
+                            orders.map(order => <OrderProduct
+                                key={order._id}
+                                order={order}
+                                deleteOrder={deleteOrder}
+                            ></OrderProduct>)
+                        }
+                    </Grid>
+                </Box>
+                    :
+                    <CircularProgress />
+            }
 
         </div>
     );

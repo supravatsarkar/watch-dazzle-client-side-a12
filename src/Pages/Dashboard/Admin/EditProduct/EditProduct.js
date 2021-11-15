@@ -11,7 +11,6 @@ const EditProduct = () => {
     const [productInfo, setProductInfo] = useState({});
     const { _id, productName, img, brand, price, features, discount, description } = product;
 
-    // console.log(productName, img);
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
@@ -29,12 +28,11 @@ const EditProduct = () => {
         } else {
             newProductInfo[field] = value;
         }
-        // console.log(newProductInfo);
+
         setProductInfo(newProductInfo);
     }
 
     const handleOnSubmit = e => {
-        console.log(productInfo);
         fetch(`http://localhost:5000/products/${id}`, {
             method: 'PUT',
             headers: {
@@ -44,7 +42,6 @@ const EditProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 if (data.modifiedCount >= 1) {
                     alert('Update Done');
                     // e.target.reset();

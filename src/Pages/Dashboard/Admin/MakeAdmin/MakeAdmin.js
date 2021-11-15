@@ -6,12 +6,10 @@ const MakeAdmin = () => {
 
     const handelOnBlur = e => {
         const value = e.target.value;
-        console.log(value);
         setEmail(value);
     }
 
     const handleOnSubmit = e => {
-        console.log('hit submit', email);
         fetch(`http://localhost:5000/users/makeAdmin/${email}`, {
             method: 'PUT',
         })

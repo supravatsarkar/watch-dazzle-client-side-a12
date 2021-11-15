@@ -10,11 +10,10 @@ const OrderProduct = ({ order, deleteOrder }) => {
         fetch(`http://localhost:5000/products/${productId}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setProduct(data);
             })
     }, [])
-    console.log('img load', img);
+
     return (
         <Grid item xs={12} sm={6} md={3}>
             <Card sx={{}}>

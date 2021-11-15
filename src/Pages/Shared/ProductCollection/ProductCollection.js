@@ -5,12 +5,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const ProductCollection = ({ productSize }) => {
     const [products, setProducts] = useState([]);
-    console.log('productSize', productSize);
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setProducts(data);
             })
     }, [])

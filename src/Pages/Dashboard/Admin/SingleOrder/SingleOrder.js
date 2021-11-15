@@ -19,7 +19,6 @@ const SingleOrder = ({ order, deleteOrder, handleStatus }) => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    console.log('single order', data);
                     setProduct(data);
                 } else {
                     setProduct(notAvailableProduct);
@@ -28,9 +27,6 @@ const SingleOrder = ({ order, deleteOrder, handleStatus }) => {
             })
     }, [productId])
 
-
-    // console.log('order', productId);
-    console.log('product order', product);
     return (
         <Grid item xs={12} sm={6} md={3}>
             <Card sx={{}}>

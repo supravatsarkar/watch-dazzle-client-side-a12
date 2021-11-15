@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
 import SingleProduct from '../SingleProduct/SingleProduct';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
@@ -9,14 +10,12 @@ const ManageProducts = () => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 setProducts(data);
                 setDataLoad(false);
             })
     }, [dataLoad])
 
     const deleteOrder = (id) => {
-        // console.log('hit id-', id);
         const confirm = window.confirm('Are you delete product?');
         if (confirm) {
             fetch(`http://localhost:5000/products/?id=${id}`, {
@@ -24,7 +23,6 @@ const ManageProducts = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.deletedCount >= 1) {
                         alert('delete successful');
                         setDataLoad(true);
@@ -40,18 +38,21 @@ const ManageProducts = () => {
             <Typography variant="h6" color="error.main" sx={{ fontWeight: 400, borderBottom: 1, borderColor: 'error.main', mb: 2 }}>
                 Total Added Products: {products.length}
             </Typography>
-            <Box container >
-                <Grid container spacing={2}>
-                    {
-                        products.map(product => <SingleProduct
-                            key={product._id}
-                            product={product}
-                            deleteOrder={deleteOrder}
-                        ></SingleProduct>)
-                    }
-                </Grid>
-            </Box>
-
+            {
+                products.length ? <Box container >
+                    <Grid container spacing={2}>
+                        {
+                            products.map(product => <SingleProduct
+                                key={product._id}
+                                product={product}
+                                deleteOrder={deleteOrder}
+                            ></SingleProduct>)
+                        }
+                    </Grid>
+                </Box>
+                    :
+                    <CircularProgress color="warning" />
+            }
         </div>
     );
 };

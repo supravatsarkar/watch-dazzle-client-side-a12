@@ -116,8 +116,6 @@ const Dashboard = () => {
     const { user, admin, logout } = useAuth();
     const { path, url } = useRouteMatch();
 
-    console.log('dashboard', admin);
-
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 

@@ -24,7 +24,7 @@ const useFirebase = () => {
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
-                    console.log('from register-', userInfo);
+
                 }).catch((error) => {
                     setError(error.message);
                 });
@@ -65,24 +65,20 @@ const useFirebase = () => {
             }
             setLoading(false);
         });
-        console.log('execute useEffect--');
         return () => unsubscribed;
     }, []);
 
     //check admin
     useEffect(() => {
         setAdminLoading(true)
-        console.log('run check admin');
         fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setAdmin(data.admin);
                 setAdminLoading(false)
             })
     }, [user.email])
 
-    // console.log(error);
     const logout = () => {
         signOut(auth)
             .then(() => {
@@ -93,7 +89,6 @@ const useFirebase = () => {
     }
 
     const saveUserDb = (userInfo) => {
-        console.log('run saveUserDb func', userInfo);
         fetch('http://localhost:5000/users', {
             method: 'PUT',
             headers: {
@@ -101,7 +96,7 @@ const useFirebase = () => {
             },
             body: JSON.stringify(userInfo)
         }).then(res => res.json())
-            .then(data => console.log(data));
+            .then(data => { });
     }
 
 

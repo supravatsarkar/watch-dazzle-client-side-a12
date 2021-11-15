@@ -30,12 +30,11 @@ export default function PlaceOrderModal({ open, handleClose, product }) {
         const status = 'Pending'
         const newOrderInfo = { ...orderInfo, productId, email: email, time, status };
         newOrderInfo[field] = value;
-        console.log(newOrderInfo);
         setOrderInfo(newOrderInfo);
     }
 
     const handleOnSubmit = e => {
-        console.log(orderInfo);
+
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {

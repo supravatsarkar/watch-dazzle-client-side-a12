@@ -21,7 +21,7 @@ import {
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({});
     const { login, loading, error } = useAuth();
-    console.log('Loading', loading);
+
     const history = useHistory();
     const location = useLocation();
 
@@ -31,7 +31,6 @@ const Login = () => {
         const newLoginInfo = { ...loginInfo };
         newLoginInfo[field] = value;
         setLoginInfo(newLoginInfo);
-        // console.log(newLoginInfo);
     }
     const handleOnSubmit = e => {
         const { email, password } = loginInfo;
@@ -40,7 +39,6 @@ const Login = () => {
             return;
         }
         login(email, password, history, location);
-        // console.log(loginInfo);
         e.preventDefault();
     }
     return (

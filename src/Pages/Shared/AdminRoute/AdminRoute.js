@@ -9,7 +9,6 @@ import useAuth from '../../../Hooks/useAuth';
 
 const AdminRoute = ({ children, ...rest }) => {
     const { user, adminLoading, admin } = useAuth();
-    // console.log('private route-', loading, user.email);
     if (adminLoading) {
         return <CircularProgress color="warning" />
     }
