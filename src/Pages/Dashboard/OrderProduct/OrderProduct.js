@@ -5,7 +5,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const OrderProduct = ({ order, deleteOrder }) => {
     const { productId, status } = order;
     const [product, setProduct] = useState({});
-    const { img, name, price, brand, discount } = product;
+    const { img, productName, price, brand, discount } = product;
     useEffect(() => {
         fetch(`http://localhost:5000/products/${productId}`)
             .then(res => res.json())
@@ -28,7 +28,7 @@ const OrderProduct = ({ order, deleteOrder }) => {
                 }
                 <CardContent>
                     <Typography gutterBottom variant="subtitle2" component="h5">
-                        {name}
+                        {productName}
                     </Typography>
                     <Typography gutterBottom variant="subtitle2" component="h5" color="warning.main">
                         Price: ${(price * (discount / 100)).toFixed(2)}

@@ -18,7 +18,7 @@ const ProductDetails = () => {
 
     const { id } = useParams();
     const [product, setProduct] = useState({});
-    const { _id, name, img, brand, price, features, discount } = product;
+    const { _id, name, img, brand, price, features, discount, description } = product;
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
@@ -67,6 +67,7 @@ const ProductDetails = () => {
                                     {' In Stock'}
                                 </Typography>
                             </Box>
+                            <Button onClick={handleOpen} variant="contained" color="warning" sx={{ width: '50%', mt: 3 }}>Place Order</Button>
                             <Divider />
                             <Box gutterBottom variant="body" sx={{ display: 'block', fontWeight: 500, my: 3 }}>
                                 Features:
@@ -75,9 +76,16 @@ const ProductDetails = () => {
                                 </Typography>
                             </Box>
                             <Divider />
-                            <NavLink to='#' style={{ textDecoration: "none", width: '100%' }}>
-                                <Button onClick={handleOpen} variant="contained" color="warning" sx={{ width: 1, mt: 3 }}>Place Order</Button>
-                            </NavLink>
+                            <Box gutterBottom variant="body" sx={{ display: 'block', fontWeight: 500, my: 3 }}>
+                                <h4>About this item</h4>
+                                <Typography gutterBottom variant="body" sx={{ fontWeight: 500, color: 'primary.main', mb: 3 }}>
+                                    {' '}{description}
+                                </Typography>
+                            </Box>
+                            <Divider />
+                            {/* <NavLink to='#' style={{ textDecoration: "none", width: '100%' }}> */}
+
+                            {/* </NavLink> */}
                             <PlaceOrderModal product={product} open={open} handleClose={handleClose}></PlaceOrderModal>
                         </Paper>
                     </Grid>

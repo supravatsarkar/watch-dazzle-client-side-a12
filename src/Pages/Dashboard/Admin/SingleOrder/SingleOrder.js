@@ -1,23 +1,36 @@
-import { Card, Typography, CardContent, CardMedia, CardActions, Button, Grid, Box, Paper, TableCell, TableRow, Divider } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Card, Typography, CardContent, CardMedia, CardActions, Button, Grid, Box, Paper, TableCell, TableRow, Divider } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 const SingleOrder = ({ order, deleteOrder, handleStatus }) => {
     const { productId, time, email, status } = order;
     const [product, setProduct] = useState({});
-    const { img, name, price, discount } = product;
+
+    const { img, productName, price, discount } = product;
+    const notAvailableProduct = {
+        img: 'Not Available',
+        productName: 'Product deleted from database',
+        price: 'Not Available',
+        discount: 'Not Available'
+    }
     useEffect(() => {
         fetch(`http://localhost:5000/products/${productId}`)
             .then(res => res.json())
             .then(data => {
-                // console.log('single order', data);
-                setProduct(data);
+                if (data) {
+                    console.log('single order', data);
+                    setProduct(data);
+                } else {
+                    setProduct(notAvailableProduct);
+                }
+
             })
-    }, [])
+    }, [productId])
 
 
-    // console.log('Single order', time);
+    // console.log('order', productId);
+    console.log('product order', product);
     return (
         <Grid item xs={12} sm={6} md={3}>
             <Card sx={{}}>
@@ -26,12 +39,12 @@ const SingleOrder = ({ order, deleteOrder, handleStatus }) => {
                         component="img"
                         // height="140px"
                         image={img}
-                        alt="green iguana"
+                        alt="Image not available"
                     /> : <div>Loading...</div>
                 }
                 <CardContent>
                     <Typography variant="subtitle2" component="h6">
-                        {name}
+                        {productName}
                     </Typography>
                     <Typography gutterBottom variant="subtitle2" component="h6" color="warning.main">
                         Price: ${(price * (discount / 100)).toFixed(2)}
