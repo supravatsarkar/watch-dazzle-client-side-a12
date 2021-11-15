@@ -16,8 +16,8 @@ const Navbar = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="fixed">
-                <Toolbar sx={{ display: 'flex', alignItems: 'flex-end', pb: 1 }}>
-                    {/* <IconButton
+                {/* <Toolbar sx={{ display: 'flex', pb: 1 }}>
+                    <IconButton
                         size="large"
                         edge="start"
                         color="inherit"
@@ -26,17 +26,18 @@ const Navbar = () => {
                     >
                         <MenuIcon />
 
-                    </IconButton> */}
-                    <img src={logo} style={{ width: '100px' }} alt="" />
-                    <Typography variant="caption" sx={{ flexGrow: 1, fontWeight: 500 }}>
+                        <img src={logo} style={{ width: '100px' }} alt="" />
+                    </IconButton>
+
+
+                </Toolbar> */}
+                <img src={logo} style={{ width: '100px' }} alt="" />
+                {
+                    user.email && <Typography variant="div" sx={{ flexGrow: 1, fontWeight: 300, m: 0, p: 0 }}>
                         Name: {user.displayName}
                     </Typography>
-
-                    {
-                        // user.email && <Typography variant="body1" component="p" sx={{ flexGrow: 1 }}>
-                        //     Logged In: {user.email}
-                        // </Typography>
-                    }
+                }
+                <Box>
                     <NavLink to='/home' style={{ textDecoration: 'none', marginRight: '10px', color: 'white', fontWeight: '400', borderBottom: '2px solid white', padding: '8px' }}>
                         Home
                     </NavLink>
@@ -57,7 +58,7 @@ const Navbar = () => {
                                 <Button variant="contained" color="warning" size='small'>Login</Button>
                             </NavLink>
                     }
-                </Toolbar>
+                </Box>
             </AppBar>
         </Box>
     );
