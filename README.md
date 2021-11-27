@@ -1,6 +1,6 @@
-### client side repo link:-- https://github.com/programming-hero-web-course-4/niche-website-client-side-supravatsarkar
+### client side repo link:-- https://github.com/supravatsarkar/watch-dazzle-client-side-a12
 
-### Server side repo link:-- https://github.com/programming-hero-web-course-4/niche-website-server-side-supravatsarkar
+### Server side repo link:-- https://github.com/supravatsarkar/watch-dazzle-server-side-a12
 
 ### Live link: https://dazzle-watch-mern.web.app/
 
