@@ -17,9 +17,9 @@
 * Heroku for server-side hosting.
 
 
-### Feature of Dazzle Watch Application:
+## Feature of Dazzle Watch Application:
 
- ## Normal User
+ ### Normal User
  * User can view all products on explore page
  * After registering user can place an order for any product
  * User can one-time register with name, email & password.
@@ -32,7 +32,7 @@
     - Review: - Post review
     - Logout:- Logout from application
  
-## Admin User
+### Admin User
 * Admin user id: admin@uncle.com & password:admin@123
 * Admin can view same as a normal user and extra future.
 * After login admin can enter the Dashboard route. here he sees Home, Manages All order, Add Product, Make Admin, Manages Product, logout button on the left sidebar.
